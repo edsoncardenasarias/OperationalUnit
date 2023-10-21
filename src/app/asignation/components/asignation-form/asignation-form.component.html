@@ -1,0 +1,51 @@
+<div class="containerDataForm">
+  <form id="formColumnAsignation" [formGroup]="asignationDataForm" (ngSubmit)="saveAsignation()">
+
+    <div class="titleWeb" align="center" style="margin-top: -2rem">
+      <figure>
+        <p style="font-size: 45px" class="lead">
+          {{_asignationService.asignationSelected ? 'Editar Los Datos de Una Asignación' : 'Nueva Asignación De Progama a una Unidad Operativa'}}
+        </p>
+        <figcaption class="blockquote-footer">
+          Por favor colocar toda la información que se pide a continuación,
+          con la información
+          <strong><cite title="Source Title">correcta</cite></strong>
+          y
+          <strong><cite title="Source Title">veridica.</cite></strong>
+        </figcaption>
+      </figure>
+    </div>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Descripción :</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Servicio de Orientación al Adolescente : </mat-label>
+      <mat-select formControlName="id">
+        <mat-option *ngFor="let dFunc of funcionaryData" [value]="dFunc.id">
+          {{dFunc.name}}, {{dFunc.department}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Programa a Asignar :</mat-label>
+      <mat-select formControlName="id_program">
+        <mat-option *ngFor="let dTeen of teenData" [value]="dTeen.id_program">
+          {{dTeen.name}}, {{dTeen.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div id="buttonActions">
+      <button type="button" id="buttonCancel" mat-flat-button color="primary" (click)="navigateToAsignationList()">
+        Cancelar
+      </button>
+      <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="asignationDataForm.invalid">
+        {{_asignationService.asignationSelected ? 'Modificar' : 'Registrar'}}
+      </button>
+    </div>
+  </form>
+</div>

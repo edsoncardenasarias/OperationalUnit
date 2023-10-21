@@ -1,0 +1,60 @@
+<form id="formColumn" [formGroup]="teenDataForm" (ngSubmit)="saveTeen()">
+
+  <div class="titleWeb" align="center">
+    <figure>
+      <p style="font-size: 55px" class="lead">
+        {{teenServices.teenSelected ? 'Editar datos del Adolescente' : 'Nuevo Adolescente'}}
+      </p>
+      <figcaption class="blockquote-footer">
+        Por favor colocar toda la información que se pide a continuación,
+        con la información
+        <strong><cite title="Source Title">correcta</cite></strong>
+        y
+        <strong><cite title="Source Title">veridica.</cite></strong>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div mat-dialog-content class="content">
+    <div>
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Nombre Del Programa:</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Tipo de Programa:</mat-label>
+        <input matInput formControlName="type">
+      </mat-form-field>
+
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Tiempo De Duración De Progama:</mat-label>
+        <input matInput formControlName="duration">
+      </mat-form-field>
+
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Responsable Del Programa :</mat-label>
+        <input matInput formControlName="responsible">
+      </mat-form-field>
+
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Descripción Del Programa:</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+
+      <mat-form-field class="formForRegister formForRegister">
+        <mat-label>Beneficios Del Programa :</mat-label>
+        <input matInput formControlName="beneficiary">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div id="buttonActions">
+    <button type="button" id="buttonCancel" mat-flat-button color="primary" [mat-dialog-close]="false">
+      Cancelar
+    </button>
+    <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="teenDataForm.invalid">
+      {{teenServices.teenSelected ? 'Modificar' : 'Registrar'}}
+    </button>
+  </div>
+</form>
