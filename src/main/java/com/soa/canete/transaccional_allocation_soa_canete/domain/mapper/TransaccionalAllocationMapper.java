@@ -6,17 +6,11 @@ import com.soa.canete.transaccional_allocation_soa_canete.domain.model.Transacci
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+/**Clase utilitaria para mapear entre objetos DTO y modelos de TransaccionalAllocation.*/
+
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TransaccionalAllocationMapper {
-
-    public static TransaccionalAllocation toModel(TransaccionalAllocationRequestDto dto) {
-        return new TransaccionalAllocation(
-                dto.getDescription(),
-                dto.getEstado(),
-                dto.getId(),
-                dto.getId_program()
-        );
-    }
 
     public static TransaccionalAllocation toModel(TransaccionalAllocationRequestDto dto, Integer id_funcionaryteend) {
         return new TransaccionalAllocation(
@@ -28,7 +22,7 @@ public class TransaccionalAllocationMapper {
         );
     }
 
-    public static TransaccionalAllocationResponseDto toDto(TransaccionalAllocation model) {
+    public static TransaccionalAllocationResponseDto dto(TransaccionalAllocation model) {
         return new TransaccionalAllocationResponseDto(
                 model.getId_funcionaryteend(),
                 model.getDescription(),
